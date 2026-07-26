@@ -1,0 +1,17 @@
+
+import pandas as pd
+try:
+    df = pd.read_csv('data.csv')
+    print("Dataset successfully loaded!\n")
+except FileNotFoundError:
+    print("Error: File not found. Please check your path name.\n")
+rows, columns = df.shape
+print(f"Total Rows: {rows}")
+print(f"Total Columns: {columns}\n")
+print(df.head())
+print("\n")
+print(" Dataset Information ")
+df.info()
+
+
+
