@@ -1,0 +1,21 @@
+
+import matplotlib.pyplot as plt
+names = ['vibes', 'vish', 'xyz']
+marks = [60, 30, 10]
+plt.pie(marks, labels=names) 
+plt.show()
+import matplotlib.pyplot as plt
+names = ['vibes', 'vish', 'xyz']
+marks = [60, 30, 10]
+plt.bar(names,marks)
+plt.show()
+import matplotlib.pyplot as plt
+names = ['vibes', 'vish', 'xyz']
+marks = [60, 30, 10]
+plt.plot(names,marks)
+plt.show()
+
+
+
+
+
