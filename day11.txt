@@ -1,0 +1,7 @@
+For the data taken in day-8:
+Insight Report Prepared:
+Highest value: 'vibes' has the maximum mark of 60, making it the dominant category
+Lowest value: 'xyz' holds the minimum mark of 10, representing the smallest share
+Total sum: The sum of all marks equals 100 
+Proportional share: 'vibes' accounts for 60% of the total, 'vish' takes 30%, and 'xyz' contributes 10%.
+Descending order: The data points are arranged in a strict descending order of values (60 > 30 > 10).
