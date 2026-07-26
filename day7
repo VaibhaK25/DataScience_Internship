@@ -1,0 +1,19 @@
+
+import pandas as pd
+data = {
+    "Product": ["A", "B", "A", "B", "A"],
+    "Sales": [100, 150, 200, 250, 300],
+}
+df = pd.DataFrame(data)
+total_sales = df["Sales"].sum()
+avg_sales = df["Sales"].mean()
+min_sales = df["Sales"].min()
+max_sales = df["Sales"].max()
+count_sales = df["Sales"].count()
+print(f"Total: {total_sales}")
+print(f"Average: {avg_sales}")
+print(f"Minimum: {min_sales}")
+print(f"Maximum: {max_sales}")
+print(f"Count: {count_sales}")
+print(df.describe())
+
