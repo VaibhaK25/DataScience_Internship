@@ -1,0 +1,23 @@
+
+import pandas as pd
+import numpy as np
+raw_data = {
+    'Name': [' Alice ', 'Bob', 'Alice', 'Charlie', 'David'],
+    'Age': [25, np.nan, 25, 150, 30],
+    'Join_Date': ['2023-01-15', '2023-02-20', '2023-01-15', '2023-03-05', '2023-04-12'],
+    'Salary': ['50000', '60000', '50000', '70000', 'invalid_text']
+}
+df = pd.DataFrame(raw_data)
+print("Original Messy Data:\n", df)
+df['Name'] = df['Name'].str.strip()
+df = df.drop_duplicates()
+average_age = df['Age'].mean()
+df['Age'] = df['Age'].fillna(average_age)
+df['Salary'] = pd.to_numeric(df['Salary'], errors='coerce')
+df['Salary'] = df['Salary'].fillna(0)
+df = df[df['Age'] < 100]
+print("\nCleaned Data:\n", df)
+df.to_csv("cleaned_dataset.csv", index=False)
+print("\nSuccess! 'cleaned_dataset.csv' has been saved to your folder.")
+
+
