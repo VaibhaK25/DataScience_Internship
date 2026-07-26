@@ -1,0 +1,34 @@
+
+import numpy as np
+import pandas as pd
+raw_data = {
+    "Employee_ID": [101, 102, 102, 103, 104, 105],
+    "Name": ["Alice", "Bob", "Bob", "Charlie", "David", np.nan],
+    "Join_Date": [
+        "2023-01-15",
+        "2023-02-20",
+        "2023-02-20",
+        "2023-03-10",
+        "2023-04-05",
+        "2023-05-12",
+    ],
+    "Salary": ["75000", "82000", "82000", np.nan, "90000", "65000"],
+    "Is_Remote": [1, 0, 0, 1, np.nan, 0],
+}
+
+df = pd.DataFrame(raw_data)
+print(" Original Messy DataFrame ")
+print(df)
+print(df.dtypes)
+df_cleaned = df.drop_duplicates().copy()
+salary_median = df_cleaned["Salary"].astype(float).median()
+df_cleaned["Salary"] = df_cleaned["Salary"].fillna(salary_median)
+df_cleaned = df_cleaned.dropna(subset=["Name"])
+df_cleaned["Is_Remote"] = df_cleaned["Is_Remote"].fillna(0)
+df_cleaned["Salary"] = df_cleaned["Salary"].astype(int)
+df_cleaned["Join_Date"] = pd.to_datetime(df_cleaned["Join_Date"])
+df_cleaned["Is_Remote"] = df_cleaned["Is_Remote"].astype(bool)
+
+print("\n--- Expected Clean Outcome ---")
+print(df_cleaned)
+print(df_cleaned.dtypes)
