@@ -1,0 +1,49 @@
+
+import matplotlib.pyplot as plt
+
+# ==========================================
+# 1. CENTRALIZED DATA (Dictionary Setup)
+# ==========================================
+# Keys are the categories, values are the numerical scores
+dataset = {
+    'vibes': 60, 
+    'vish': 30, 
+    'xyz': 10
+}
+
+# Modern, clean color scheme for the graphs
+CHART_COLORS = ['#4C72B0', '#DD8452', '#55A868']
+
+
+# ==========================================
+# 2. REUSABLE PLOTTING FUNCTION
+# ==========================================
+def create_dashboard(data_dict):
+    """
+    Extracts data from a dictionary and plots a 3-chart dashboard.
+    """
+    # Extract categories and values dynamically from the dictionary keys and values
+    categories = data_dict.keys()
+    values = data_dict.values()
+    #Create a single row with 3 columns for our charts
+    fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(18, 5))
+    fig.suptitle('Performance Summary Dashboard', fontsize=16, fontweight='bold', y=1.05)
+    #Chart 1: Pie Chart (Proportions)
+    axes[0].pie(values, labels=categories, autopct='%1.1f%%', colors=CHART_COLORS, startangle=140)
+    axes[0].set_title('Proportional Share', fontweight='bold')
+    # --- Chart 2: Bar Chart (Comparisons) ---
+    bars = axes[1].bar(categories, values, color=CHART_COLORS, alpha=0.85)
+    axes[1].set_title('Value Comparison', fontweight='bold')
+    axes[1].set_ylabel('Marks')
+    axes[1].grid(axis='y', linestyle='--', alpha=0.5)
+    axes[1].bar_label(bars, padding=3) # Adds numbers on top of the bars
+    #Chart 3: Line Chart (Trends)
+    axes[2].plot(categories, values, marker='o', color='#C44E52', linewidth=2.5, markersize=8)
+    axes[2].set_title('Value Trend Line', fontweight='bold')
+    axes[2].set_ylabel('Marks')
+    axes[2].grid(True, linestyle='--', alpha=0.5)
+    #Auto-adjust spacing between plots
+    plt.tight_layout()
+    plt.show()
+
+create_dashboard(dataset)
